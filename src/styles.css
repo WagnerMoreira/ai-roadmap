@@ -76,12 +76,20 @@ button:focus-visible, a:focus-visible, input:focus-visible + .custom-check { out
 .chevron { color: var(--teal); transition: transform .2s; }
 .is-open .chevron { transform: rotate(180deg); }
 .week-content { padding: .5rem 0 2.2rem 4.3rem; display: grid; grid-template-columns: .85fr 1.3fr; gap: 2.1rem 3rem; }
-.week-content section:last-child { grid-column: 1 / -1; }
+.week-flow { grid-column: 1 / -1; padding: 1rem 1.1rem; background: #eef4f1; border: 1px solid #bed2cc; border-left: 4px solid var(--teal); }
+.week-flow > p { margin: 0 0 .75rem; color: var(--ink); font-size: .7rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+.week-flow ol { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; list-style: none; }
+.week-flow li { position: relative; display: flex; align-items: center; gap: .55rem; color: #425652; font-size: .76rem; font-weight: 800; }
+.week-flow li:not(:last-child)::after { content: "→"; position: absolute; right: .1rem; color: var(--orange); font-size: 1rem; }
+.week-flow li span { width: 1.65rem; height: 1.65rem; flex: 0 0 auto; display: grid; place-items: center; color: white; background: var(--teal); border-radius: 50%; font-size: .68rem; }
 .week-content h3 { margin: 0 0 .9rem; display: flex; align-items: center; gap: .5rem; color: var(--ink); font-size: .75rem; letter-spacing: .09em; text-transform: uppercase; }
 .week-content h3 svg { color: var(--orange); }
+.section-help { margin: -.35rem 0 1rem; color: var(--muted); font-size: .76rem; line-height: 1.5; }
+.evidence-section { grid-column: 1 / -1; padding-top: 1.6rem; border-top: 1px solid #c9cbc3; }
+.evidence-help { max-width: 720px; }
 .goal-list { margin: 0; padding: 0; list-style: none; display: grid; gap: .75rem; }
 .goal-list li { padding-left: 1rem; color: #425652; font-size: .86rem; line-height: 1.5; border-left: 2px solid #d8a950; }
-.task-list { display: grid; gap: .5rem; }
+.task-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
 .task-row { display: grid; grid-template-columns: 0 1.4rem 1fr; align-items: start; gap: .55rem; padding: .8rem; background: #fff; border: 1px solid #deddd5; cursor: pointer; }
 .task-row:hover { border-color: #aabbb6; }
 .task-row input { width: 0; height: 0; opacity: 0; }
@@ -177,8 +185,15 @@ footer a { color: inherit; text-underline-offset: .2rem; }
 .metal-theme .week-title { color: #eee9dd; font-family: Impact, "Arial Black", sans-serif; font-size: 1.7rem; text-transform: uppercase; letter-spacing: .015em; }
 .metal-theme .week-subtitle, .metal-theme .week-status { color: #8f8a82; }
 .metal-theme .chevron { color: #d3232c; }
+.metal-theme .week-flow { background: #0a0a0b; border-color: #423d3d; border-left-color: #b5121b; }
+.metal-theme .week-flow > p { color: #d7b56d; }
+.metal-theme .week-flow li { color: #c7c0b6; }
+.metal-theme .week-flow li:not(:last-child)::after { color: #d3232c; }
+.metal-theme .week-flow li span { color: #f1e9dc; background: #9f151c; border-radius: 0; }
 .metal-theme .week-content h3 { color: #ddd6ca; letter-spacing: .16em; }
 .metal-theme .week-content h3 svg { color: #d3232c; }
+.metal-theme .section-help { color: #9d978f; }
+.metal-theme .evidence-section { border-top-color: #403b3c; }
 .metal-theme .goal-list li { color: #bdb6ac; border-left-color: #972028; }
 .metal-theme .task-row { color: #ddd6ca; background: #0c0c0d; border-color: #373435; }
 .metal-theme .task-row:hover { border-color: #8f2228; }
@@ -245,7 +260,8 @@ footer a { color: inherit; text-underline-offset: .2rem; }
   .section-intro, .capstone-section { grid-template-columns: 1fr; }
   .capstone-number { font-size: 5rem; }
   .week-content { grid-template-columns: 1fr; padding-left: 0; }
-  .week-content section:last-child { grid-column: auto; }
+  .week-flow, .evidence-section { grid-column: auto; }
+  .task-list { grid-template-columns: 1fr; }
   .resource-list { grid-template-columns: 1fr; }
   .start-card { margin-left: 1rem; margin-right: 1rem; grid-template-columns: 4rem 1fr; }
   .start-card ol { grid-column: 1 / -1; }
@@ -262,6 +278,8 @@ footer a { color: inherit; text-underline-offset: .2rem; }
   .roadmap-section, .side-quest-section { padding-left: 1rem; padding-right: 1rem; }
   .section-intro { grid-template-columns: 1fr; gap: 1rem; }
   .week-card.is-open { margin: 0 -.5rem; padding: 0 .5rem; }
+  .week-flow ol { grid-template-columns: 1fr; }
+  .week-flow li:not(:last-child)::after { content: "↓"; right: .3rem; }
   .week-summary { grid-template-columns: 2.6rem 1fr 1.2rem; gap: .7rem; }
   .week-index { width: 2.2rem; height: 2.2rem; }
   .week-status { grid-column: 2; min-width: 0; display: flex; gap: 1rem; text-align: left; }

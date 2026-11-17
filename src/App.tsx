@@ -12,7 +12,7 @@ import {
 import { roadmap, sideQuest } from "./data/roadmap";
 import type { RoadmapWeek, Resource } from "./types";
 import HowToUse from "./HowToUse";
-import { playMetalRiff } from "./audio/playMetalRiff";
+import { playMetalGuitarHit } from "./audio/playMetalGuitarHit";
 import { toggleTaskCompletion } from "./progress";
 
 const STORAGE_KEY = "ai-native-tpm-roadmap-progress-v1";
@@ -78,15 +78,33 @@ function WeekModule({
 
       {open && (
         <div className="week-content">
-          <section>
-            <h3><Target size={17} /> Learning goals</h3>
+          <div className="week-flow">
+            <p>Complete this week in order</p>
+            <ol>
+              <li><span>1</span> Review the goals</li>
+              <li><span>2</span> Open the resources</li>
+              <li><span>3</span> Build evidence, then check it off</li>
+            </ol>
+          </div>
+
+          <section className="goals-section">
+            <h3><Target size={17} /> 1 · Review the learning goals</h3>
             <ul className="goal-list">
               {item.goals.map((goal) => <li key={goal}>{goal}</li>)}
             </ul>
           </section>
 
-          <section>
-            <h3><Check size={17} /> Build the evidence</h3>
+          <section className="resources-section">
+            <h3><BookOpen size={17} /> 2 · Open the learning resources</h3>
+            <p className="section-help">Start with the core course. Open the guides that help you complete this week’s evidence.</p>
+            <div className="resource-list">
+              {item.resources.map((resource) => <ResourceLink key={resource.title} resource={resource} />)}
+            </div>
+          </section>
+
+          <section className="evidence-section">
+            <h3><Check size={17} /> 3 · Build the evidence</h3>
+            <p className="section-help evidence-help">Use what you learned in the resources. Check an item only after the named evidence exists.</p>
             <div className="task-list">
               {item.tasks.map((task) => {
                 const checked = complete.has(task.id);
@@ -98,13 +116,6 @@ function WeekModule({
                   </label>
                 );
               })}
-            </div>
-          </section>
-
-          <section>
-            <h3><BookOpen size={17} /> Resources</h3>
-            <div className="resource-list">
-              {item.resources.map((resource) => <ResourceLink key={resource.title} resource={resource} />)}
             </div>
           </section>
         </div>
@@ -134,7 +145,7 @@ export default function App() {
   function toggleTask(id: string) {
     const result = toggleTaskCompletion(complete, id);
     setComplete(result.next);
-    if (result.justCompleted) playMetalRiff();
+    if (result.justCompleted) playMetalGuitarHit();
   }
 
   function resetProgress() {
