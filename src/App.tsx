@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { roadmap, sideQuest } from "./data/roadmap";
 import type { RoadmapWeek, Resource } from "./types";
+import HowToUse from "./HowToUse";
 
 const STORAGE_KEY = "ai-native-tpm-roadmap-progress-v1";
 
@@ -112,6 +113,10 @@ function WeekModule({
 }
 
 export default function App() {
+  if (window.location.pathname.startsWith("/how-to-use")) {
+    return <HowToUse />;
+  }
+
   const [complete, setComplete] = useState<Set<string>>(loadProgress);
   const [openWeek, setOpenWeek] = useState(1);
   const allTasks = useMemo(() => roadmap.flatMap((week) => week.tasks), []);
@@ -145,6 +150,7 @@ export default function App() {
         <nav className="topbar" aria-label="Page navigation">
           <a className="wordmark" href="#top">AI-NATIVE <span>/ TPM</span></a>
           <div>
+            <a href="/how-to-use/">How to use</a>
             <a href="#roadmap">Roadmap</a>
             <a href="#side-quest">Side quest</a>
           </div>
@@ -158,9 +164,12 @@ export default function App() {
               A field guide for technical project managers who need to coordinate code,
               releases, agents, quality, governance, and delivery performance.
             </p>
-            <a className="primary-action" href="#roadmap">
-              Continue the roadmap <ChevronDown size={17} />
-            </a>
+            <div className="hero-actions">
+              <a className="primary-action" href="#roadmap">
+                Continue the roadmap <ChevronDown size={17} />
+              </a>
+              <a className="secondary-action" href="/how-to-use/">How to use it</a>
+            </div>
           </div>
 
           <aside className="progress-panel" aria-label="Overall progress">
