@@ -117,7 +117,7 @@ export default function App() {
     return <HowToUse />;
   }
 
-  const isMetal = window.location.pathname.startsWith("/metal");
+  const isMetal = !window.location.pathname.startsWith("/classic");
 
   const [complete, setComplete] = useState<Set<string>>(loadProgress);
   const [openWeek, setOpenWeek] = useState(1);
@@ -150,12 +150,12 @@ export default function App() {
     <main className={isMetal ? "metal-theme" : undefined}>
       <header className="hero">
         <nav className="topbar" aria-label="Page navigation">
-          <a className="wordmark" href="#top">{isMetal ? "IRON PATH" : "AI-NATIVE"} <span>/ <abbr title="Technical Project Manager">TPM</abbr></span></a>
+          <a className="wordmark" href="#top">{isMetal ? "IRON PATH" : "AI-NATIVE ROADMAP"}</a>
           <div>
             <a href="/how-to-use/">How to use</a>
             <a href="#roadmap">Roadmap</a>
             <a href="#side-quest">Side quest</a>
-            <a href={isMetal ? "/" : "/metal/"}>{isMetal ? "Classic version" : "Metal version"}</a>
+            <a href={isMetal ? "/classic/" : "/"}>{isMetal ? "Classic version" : "Metal version"}</a>
           </div>
         </nav>
 

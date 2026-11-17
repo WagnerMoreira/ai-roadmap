@@ -1,8 +1,10 @@
-# AI-Native TPM Roadmap
+# AI-Native Technical Project Manager Roadmap
 
 An interactive 10-week learning roadmap for an AI-native technical project manager. The app is a static Vite, React, and TypeScript site. It saves checklist progress in the visitor's browser with `localStorage`.
 
 Live site: https://ai-roadmap-21r.pages.dev
+
+The heavy-metal layout is the default. The original layout remains available at `/classic/`.
 
 ## Edit the curriculum
 

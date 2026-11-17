@@ -12,7 +12,7 @@ export default function HowToUse() {
     <main className="guide-page">
       <header className="guide-header">
         <nav className="topbar" aria-label="Guide navigation">
-          <a className="wordmark" href="/">AI-NATIVE <span>/ <abbr title="Technical Project Manager">TPM</abbr></span></a>
+          <a className="wordmark" href="/">AI-NATIVE ROADMAP</a>
           <a className="back-link" href="/"><ArrowLeft size={15} /> Back to roadmap</a>
         </nav>
 
