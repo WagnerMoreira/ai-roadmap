@@ -62,7 +62,7 @@ function WeekModule({
   return (
     <article className={`week-card ${open ? "is-open" : ""} ${finished ? "is-finished" : ""}`}>
       <button className="week-summary" type="button" onClick={onOpen} aria-expanded={open}>
-        <span className="week-index">{finished ? <Check size={17} /> : String(item.week).padStart(2, "0")}</span>
+        <span className="week-index">{finished ? <Check size={17} /> : <span>{String(item.week).padStart(2, "0")}</span>}</span>
         <span className="week-heading">
           <span className="eyebrow">Week {item.week} · {item.phase}</span>
           <span className="week-title">{item.title}</span>
@@ -117,6 +117,8 @@ export default function App() {
     return <HowToUse />;
   }
 
+  const isMetal = window.location.pathname.startsWith("/metal");
+
   const [complete, setComplete] = useState<Set<string>>(loadProgress);
   const [openWeek, setOpenWeek] = useState(1);
   const allTasks = useMemo(() => roadmap.flatMap((week) => week.tasks), []);
@@ -145,28 +147,30 @@ export default function App() {
   }
 
   return (
-    <main>
+    <main className={isMetal ? "metal-theme" : undefined}>
       <header className="hero">
         <nav className="topbar" aria-label="Page navigation">
-          <a className="wordmark" href="#top">AI-NATIVE <span>/ TPM</span></a>
+          <a className="wordmark" href="#top">{isMetal ? "IRON PATH" : "AI-NATIVE"} <span>/ <abbr title="Technical Project Manager">TPM</abbr></span></a>
           <div>
             <a href="/how-to-use/">How to use</a>
             <a href="#roadmap">Roadmap</a>
             <a href="#side-quest">Side quest</a>
+            <a href={isMetal ? "/" : "/metal/"}>{isMetal ? "Classic version" : "Metal version"}</a>
           </div>
         </nav>
 
         <div className="hero-grid" id="top">
           <div className="hero-copy">
-            <span className="kicker">10 weeks · 6–10 hours/week · one capstone</span>
-            <h1>Run software delivery<br />with AI in the loop.</h1>
+            <span className="kicker">{isMetal ? "10-week campaign · 40 trials · one final release" : "10 weeks · 6–10 hours/week · one capstone"}</span>
+            <h1>{isMetal ? <>Command the machine.<br />Deliver the release.</> : <>Run software delivery<br />with AI in the loop.</>}</h1>
             <p>
-              A field guide for technical project managers who need to coordinate code,
-              releases, agents, quality, governance, and delivery performance.
+              {isMetal
+                ? "A field manual for technical project managers operating where code, AI agents, quality gates, and production releases collide."
+                : "A field guide for technical project managers who need to coordinate code, releases, agents, quality, governance, and delivery performance."}
             </p>
             <div className="hero-actions">
               <a className="primary-action" href="#roadmap">
-                Continue the roadmap <ChevronDown size={17} />
+                {isMetal ? "Open the roadmap" : "Continue the roadmap"} <ChevronDown size={17} />
               </a>
               <a className="secondary-action" href="/how-to-use/">How to use it</a>
             </div>
@@ -174,7 +178,7 @@ export default function App() {
 
           <aside className="progress-panel" aria-label="Overall progress">
             <div className="progress-topline">
-              <span>Overall progress</span>
+              <span>{isMetal ? "Campaign progress" : "Overall progress"}</span>
               <strong>{percent}%</strong>
             </div>
             <div className="progress-track" aria-hidden="true"><span style={{ width: `${percent}%` }} /></div>
@@ -200,8 +204,8 @@ export default function App() {
       <section className="roadmap-section" id="roadmap">
         <div className="section-intro">
           <div>
-            <span className="eyebrow">Your route</span>
-            <h2>Ten weeks. One connected system.</h2>
+            <span className="eyebrow">{isMetal ? "The campaign" : "Your route"}</span>
+            <h2>{isMetal ? "Ten weeks. No filler." : "Ten weeks. One connected system."}</h2>
           </div>
           <p>Open a week, complete the work, and check off the evidence. Progress stays in this browser.</p>
         </div>
@@ -223,8 +227,8 @@ export default function App() {
       <section className="capstone-section">
         <div className="capstone-number">10</div>
         <div>
-          <span className="eyebrow">The capstone thread</span>
-          <h2>Ship a small product as if it mattered.</h2>
+          <span className="eyebrow">{isMetal ? "The final release" : "The capstone thread"}</span>
+          <h2>{isMetal ? "Prove the system under pressure." : "Ship a small product as if it mattered."}</h2>
         </div>
         <p>
           Start with a delivery brief. Build the backlog with an AI agent. Set quality and governance gates.

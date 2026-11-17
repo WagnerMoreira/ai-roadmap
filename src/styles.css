@@ -27,6 +27,7 @@ button:focus-visible, a:focus-visible, input:focus-visible + .custom-check { out
 .topbar { max-width: 1180px; margin: 0 auto; padding: 1.4rem 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.14); position: relative; z-index: 1; }
 .wordmark { text-decoration: none; font-size: .8rem; font-weight: 800; letter-spacing: .13em; }
 .wordmark span { color: #91bab2; }
+.wordmark abbr { text-decoration: none; }
 .topbar div { display: flex; gap: 1.5rem; }
 .topbar div a { color: #dbe5e1; font-size: .86rem; text-decoration: none; }
 .topbar div a:hover { color: white; }
@@ -117,6 +118,92 @@ button:focus-visible, a:focus-visible, input:focus-visible + .custom-check { out
 
 footer { padding: 1.4rem max(2rem, calc((100vw - 1180px) / 2)); display: flex; justify-content: space-between; gap: 1rem; color: #9fb7b2; background: var(--ink); font-size: .72rem; }
 footer a { color: inherit; text-underline-offset: .2rem; }
+
+/* Alternate heavy-metal layout */
+.metal-theme {
+  min-height: 100vh;
+  color: #e7e1d5;
+  background:
+    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px),
+    #09090a;
+  background-size: 28px 28px;
+  --ink: #080809;
+  --muted: #a39d92;
+  --paper: #09090a;
+  --cream: #151516;
+  --line: #373435;
+  --teal: #b5121b;
+  --teal-light: #171516;
+  --orange: #d63425;
+  --yellow: #d7b56d;
+}
+.metal-theme .hero { min-height: 780px; background: linear-gradient(115deg, #050506 0%, #111113 68%, #27090b 100%); border-bottom: 8px solid #a40e17; }
+.metal-theme .hero::before { content: ""; position: absolute; inset: 0; opacity: .32; background: repeating-linear-gradient(118deg, transparent 0 110px, rgba(255,255,255,.035) 111px 112px); pointer-events: none; }
+.metal-theme .hero::after { right: 6%; top: 7rem; width: 21rem; height: 29rem; border: 2px solid rgba(204,24,32,.5); border-radius: 0; box-shadow: 32px 32px 0 rgba(255,255,255,.025), -32px -32px 0 rgba(255,255,255,.018); transform: rotate(45deg); }
+.metal-theme .topbar { max-width: 1320px; border-bottom-color: #4a1719; }
+.metal-theme .wordmark { color: #f2eee4; font-family: Impact, "Arial Black", sans-serif; font-size: 1.05rem; font-style: italic; letter-spacing: .16em; transform: skew(-5deg); }
+.metal-theme .wordmark span { color: #d5222b; }
+.metal-theme .topbar div a { color: #b9b3a9; font-family: "Arial Narrow", Arial, sans-serif; font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.metal-theme .topbar div a:hover { color: #ef2c35; }
+.metal-theme .hero-grid { max-width: 1320px; padding-top: 7.5rem; grid-template-columns: 1.55fr .55fr; gap: 6rem; }
+.metal-theme .kicker { color: #e02c34; font-size: .68rem; letter-spacing: .2em; }
+.metal-theme .hero h1 { max-width: 930px; color: #eee9dd; font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; font-size: clamp(4rem, 8.4vw, 8.2rem); font-weight: 900; line-height: .82; letter-spacing: -.035em; text-transform: uppercase; text-shadow: 4px 4px 0 #741017, 8px 8px 0 rgba(0,0,0,.8); transform: scaleX(.93); transform-origin: left; }
+.metal-theme .hero-copy p { max-width: 720px; color: #bcb5aa; border-left: 4px solid #b5121b; padding-left: 1rem; }
+.metal-theme .primary-action { color: #f7f1e4; background: #b5121b; border: 1px solid #ee3540; border-radius: 0; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px)); text-transform: uppercase; letter-spacing: .08em; }
+.metal-theme .primary-action:hover { background: #d31a24; }
+.metal-theme .secondary-action { color: #aba59b; text-transform: uppercase; letter-spacing: .08em; }
+.metal-theme .progress-panel { color: #eee9dd; background: rgba(13,13,14,.95); border: 1px solid #635e58; border-top: 5px solid #c21821; box-shadow: 18px 18px 0 rgba(0,0,0,.45); clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%); }
+.metal-theme .progress-topline strong { color: #e12630; font-family: Impact, sans-serif; font-size: 3rem; }
+.metal-theme .progress-track { height: 10px; background: #292627; border: 1px solid #4b4747; }
+.metal-theme .progress-track span { background: repeating-linear-gradient(135deg, #b5121b 0 8px, #e33139 8px 16px); }
+.metal-theme .progress-panel > p, .metal-theme .next-up span, .metal-theme .reset-button { color: #8f8a82; }
+.metal-theme .next-up { border-color: #393536; }
+.metal-theme .phase-strip { max-width: 1320px; border-top-color: #3b1719; }
+.metal-theme .phase-strip span { color: #8e8980; font-weight: 800; }
+.metal-theme .phase-strip b { color: #db2029; }
+.metal-theme .roadmap-section { max-width: 1180px; padding-top: 7rem; }
+.metal-theme .section-intro { grid-template-columns: 1fr .55fr; border-bottom: 1px solid #4a4545; padding-bottom: 2.5rem; }
+.metal-theme .section-intro .eyebrow { color: #d3242d; letter-spacing: .22em; }
+.metal-theme .section-intro h2 { color: #eee9dd; font-family: Impact, "Arial Black", sans-serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 900; letter-spacing: -.025em; text-transform: uppercase; }
+.metal-theme .section-intro p { color: #9d978f; }
+.metal-theme .roadmap-list { border-top: 0; }
+.metal-theme .week-card { border-bottom-color: #3a3737; }
+.metal-theme .week-card.is-open { margin-top: 1rem; margin-bottom: 1rem; background: #121213; border: 1px solid #4d4647; border-left: 6px solid #b5121b; box-shadow: 16px 16px 0 #050505; clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%); }
+.metal-theme .week-index { width: 2.8rem; height: 2.8rem; color: #d6b367; border: 1px solid #706858; border-radius: 0; transform: rotate(45deg); }
+.metal-theme .week-index > * { transform: rotate(-45deg); }
+.metal-theme .week-summary { padding: 1.8rem 0; }
+.metal-theme .week-heading .eyebrow { color: #c81d26; letter-spacing: .16em; }
+.metal-theme .week-title { color: #eee9dd; font-family: Impact, "Arial Black", sans-serif; font-size: 1.7rem; text-transform: uppercase; letter-spacing: .015em; }
+.metal-theme .week-subtitle, .metal-theme .week-status { color: #8f8a82; }
+.metal-theme .chevron { color: #d3232c; }
+.metal-theme .week-content h3 { color: #ddd6ca; letter-spacing: .16em; }
+.metal-theme .week-content h3 svg { color: #d3232c; }
+.metal-theme .goal-list li { color: #bdb6ac; border-left-color: #972028; }
+.metal-theme .task-row { color: #ddd6ca; background: #0c0c0d; border-color: #373435; }
+.metal-theme .task-row:hover { border-color: #8f2228; }
+.metal-theme .task-row strong { color: #ded8cc; }
+.metal-theme .task-row small { color: #88837c; }
+.metal-theme .is-checked .custom-check { background: #a91018; }
+.metal-theme .resource-link { background: #0d0d0e; border-color: #403c3c; border-left: 3px solid #99151c; }
+.metal-theme .resource-link:hover { border-color: #bd1c24; }
+.metal-theme .resource-icon { color: #e8e1d5; background: #8f151c; border-radius: 0; }
+.metal-theme .resource-meta, .metal-theme .resource-copy small { color: #858078; }
+.metal-theme .resource-copy strong { color: #ded8cc; }
+.metal-theme .resource-link > svg { color: #cf2028; }
+.metal-theme .core-pill { color: #f4eadd; background: #8e1219; }
+.metal-theme .capstone-section { max-width: 1320px; color: #eee8dc; background: linear-gradient(115deg, #6c0b11, #180708 65%); border: 1px solid #a7282e; box-shadow: 18px 18px 0 #030303; clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 28px 100%, 0 calc(100% - 28px)); }
+.metal-theme .capstone-number { color: #d7b56d; font-family: Impact, sans-serif; }
+.metal-theme .capstone-section h2 { color: #f1ebdf; font-family: Impact, "Arial Black", sans-serif; text-transform: uppercase; letter-spacing: .01em; }
+.metal-theme .capstone-section > p { color: #c7bab1; }
+.metal-theme .capstone-section .eyebrow { color: #d7b56d; }
+.metal-theme .side-quest-label { color: #090909; background: #d7b56d; }
+.metal-theme .side-quest-card { color: #e0d9cd; background: #111112; border-color: #625a4b; }
+.metal-theme .side-quest-card span { color: #d7b56d; }
+.metal-theme .side-quest-card h2 { color: #eee8dc; font-family: Impact, "Arial Black", sans-serif; text-transform: uppercase; }
+.metal-theme .side-quest-card p { color: #99938a; }
+.metal-theme .side-quest-card a { color: #f1eadf; background: #8f1219; }
+.metal-theme footer { color: #77726b; background: #050506; border-top: 1px solid #3e1618; }
 
 .guide-page { min-height: 100vh; }
 .guide-header { color: #f8f3e9; background: var(--ink); }
