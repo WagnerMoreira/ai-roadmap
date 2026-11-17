@@ -4,7 +4,6 @@ import {
   BookOpen,
   Check,
   ChevronDown,
-  Circle,
   Clock3,
   RotateCcw,
   Sparkles,
@@ -13,6 +12,8 @@ import {
 import { roadmap, sideQuest } from "./data/roadmap";
 import type { RoadmapWeek, Resource } from "./types";
 import HowToUse from "./HowToUse";
+import { playMetalRiff } from "./audio/playMetalRiff";
+import { toggleTaskCompletion } from "./progress";
 
 const STORAGE_KEY = "ai-native-tpm-roadmap-progress-v1";
 
@@ -92,7 +93,7 @@ function WeekModule({
                 return (
                   <label className={`task-row ${checked ? "is-checked" : ""}`} key={task.id}>
                     <input type="checkbox" checked={checked} onChange={() => onToggle(task.id)} />
-                    <span className="custom-check" aria-hidden="true">{checked ? <Check size={15} /> : <Circle size={15} />}</span>
+                    <span className="custom-check" aria-hidden="true">{checked && <Check size={15} />}</span>
                     <span><strong>{task.title}</strong><small>{task.evidence}</small></span>
                   </label>
                 );
@@ -131,12 +132,9 @@ export default function App() {
   }, [complete]);
 
   function toggleTask(id: string) {
-    setComplete((current) => {
-      const next = new Set(current);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
+    const result = toggleTaskCompletion(complete, id);
+    setComplete(result.next);
+    if (result.justCompleted) playMetalRiff();
   }
 
   function resetProgress() {
@@ -150,7 +148,7 @@ export default function App() {
     <main className={isMetal ? "metal-theme" : undefined}>
       <header className="hero">
         <nav className="topbar" aria-label="Page navigation">
-          <a className="wordmark" href="#top">{isMetal ? "IRON PATH" : "AI-NATIVE ROADMAP"}</a>
+          <a className="wordmark" href="#top">AI ROADMAP</a>
           <div>
             <a href="/how-to-use/">How to use</a>
             <a href="#roadmap">Roadmap</a>

@@ -85,8 +85,8 @@ button:focus-visible, a:focus-visible, input:focus-visible + .custom-check { out
 .task-row { display: grid; grid-template-columns: 0 1.4rem 1fr; align-items: start; gap: .55rem; padding: .8rem; background: #fff; border: 1px solid #deddd5; cursor: pointer; }
 .task-row:hover { border-color: #aabbb6; }
 .task-row input { width: 0; height: 0; opacity: 0; }
-.custom-check { width: 1.25rem; height: 1.25rem; margin-top: .05rem; display: grid; place-items: center; color: #8a9895; border-radius: 2px; }
-.is-checked .custom-check { color: white; background: var(--teal); }
+.custom-check { width: 1.25rem; height: 1.25rem; margin-top: .05rem; display: grid; place-items: center; color: #8a9895; background: transparent; border: 1.5px solid #83908d; border-radius: 2px; }
+.is-checked .custom-check { color: white; background: var(--teal); border-color: var(--teal); }
 .task-row span:last-child { display: grid; gap: .22rem; }
 .task-row strong { color: var(--ink); font-size: .82rem; line-height: 1.35; }
 .task-row small { color: var(--muted); font-size: .72rem; }
@@ -184,7 +184,8 @@ footer a { color: inherit; text-underline-offset: .2rem; }
 .metal-theme .task-row:hover { border-color: #8f2228; }
 .metal-theme .task-row strong { color: #ded8cc; }
 .metal-theme .task-row small { color: #88837c; }
-.metal-theme .is-checked .custom-check { background: #a91018; }
+.metal-theme .custom-check { border-color: #74706a; border-radius: 0; }
+.metal-theme .is-checked .custom-check { background: #a91018; border-color: #d1222a; }
 .metal-theme .resource-link { background: #0d0d0e; border-color: #403c3c; border-left: 3px solid #99151c; }
 .metal-theme .resource-link:hover { border-color: #bd1c24; }
 .metal-theme .resource-icon { color: #e8e1d5; background: #8f151c; border-radius: 0; }
